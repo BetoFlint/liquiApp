@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+  web:
+    image: python:3.10.4-alpine3.15
+    build: .
+    container_name: docker-django
+    volumes:
+      - .:/app # Monta el directorio actual en el contenedor
+    working_dir: /app # Establece el directorio de trabajo en /app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+    networks:
+      - redLiqui
+
+  mysql:
+    image: mysql
+    container_name: dockerbd
+    environment:
+      MYSQL_DATABASE: liqBD
+      MYSQL_USER: liquidacion
+      MYSQL_PASSWORD: liquidacion
+      MYSQL_ROOT_PASSWORD: liquidacion
+    ports:
+      - "3303:3306"
+    networks:
+      redLiqui:
+        ipv4_address: 172.21.0.2 # Dirección IP estática que deseas asignar
+
+networks:
+  redLiqui:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/16
