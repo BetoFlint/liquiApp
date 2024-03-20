@@ -63,7 +63,7 @@ Ingresar a liquiApp con cd liquiApp
 Activar el entorno virtual existente:
 
 .\venv\Scripts\Activate
-source venv/bin/activate
+source venv/Scripts/activate
 
 Con este comando utilizamos la versión de los componentes que existen dentro de ese entorno virtual.
 
@@ -71,7 +71,8 @@ Ejecutar el Build
 Debemos asegurarnos de encontrarnos en la misma ruta donde está el archivo Docker-Compose.yml
 
 docker-compose build
-docker-compose up-d
+
+docker-compose up -d
 
 docker-compose run python manage.py migrate
 
