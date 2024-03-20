@@ -39,7 +39,7 @@ Etapa 2: Clonación de proyecto Git
 Crear una carpeta específica en donde trabajaremos el aplicativo web.
 Acceder mediante terminal a esta ruta y ejecutar el siguiente comando para clonar y traer la última versión existente en GitHub.
 
-git clone https://github.com/BetoFlint/liquidacion
+git clone https://github.com/BetoFlint/liquiApp
 
 Eso nos traerá todos los elementos y los almacenará en la carpeta seleccionada.
 
@@ -61,14 +61,11 @@ Debemos asegurarnos de encontrarnos en la misma ruta donde está el archivo Dock
 docker-compose build
 docker-compose up-d
 
-docker-compose migrate
+docker-compose run python manage.py migrate
 
-docker-compose createsuperuser
+docker-compose run python manage.py createsuperuser
 
 Con esto ya podemos trabajar en nuestro aplicativo con visual studio y realizar modificaciones.
-
-
-
 
 PUNTOS A INCORPORAR COMO SIGUIENTES PASOS NO ABORDADOS:
 
