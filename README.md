@@ -74,9 +74,9 @@ docker-compose build
 
 docker-compose up -d
 
-docker-compose run python manage.py migrate
+docker-compose run web python manage.py migrate
 
-docker-compose run python manage.py createsuperuser
+docker-compose run web python manage.py createsuperuser
 
 Con esto ya podemos trabajar en nuestro aplicativo con visual studio y realizar modificaciones.
 
