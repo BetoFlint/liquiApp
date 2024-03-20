@@ -18,9 +18,13 @@ Se debe instalar el aplicativo docker, lo puedes encontrar en la siguiente ruta:
 
 https://www.docker.com/products/docker-desktop/
 
+Posterior a la instalación debes crearte una cuenta.
+
 Instalación de Git:
 Se debe instalar Git a traves del siguiente link.
 https://git-scm.com/downloads
+
+Debes crear una cuenta.
 
 ![Prueba](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ycIMlwgwicqlO6PcFRA-Iw.png)
 
@@ -59,6 +63,8 @@ Ingresar a liquiApp con cd liquiApp
 Activar el entorno virtual existente:
 
 .\venv\Scripts\Activate
+source venv/bin/activate
+
 Con este comando utilizamos la versión de los componentes que existen dentro de ese entorno virtual.
 
 Ejecutar el Build
