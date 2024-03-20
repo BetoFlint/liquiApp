@@ -4,11 +4,14 @@
 
 
 Etapa 1: Instalación de Software necesario
+
 Debes contar con las siguientes aplicaciones de base para poder utilizar este ambiente:
 
-Docker Desktop
-Python
-Git
+-Docker Desktop
+
+-Python
+
+-Git
 
 Instalación de docker:
 Se debe instalar el aplicativo docker, lo puedes encontrar en la siguiente ruta:
@@ -22,6 +25,9 @@ https://git-scm.com/downloads
 ![Prueba](https://miro.medium.com/v2/resize:fit:720/format:webp/1*ycIMlwgwicqlO6PcFRA-Iw.png)
 
 Instalación de Python
+
+https://www.python.org/downloads/
+
 Recordar que al momento de instalar python, se debe escoger que se añadan las variables de entorno al sistema. De lo contrario deberán ser configuradas manualmente. Es probable que para que el sistema reconozca el comando python, se deba reiniciar el equipo posterior a la instalación.
 
 Una vez reiniciado el sistema, se puede validar la correcta instalación de ambis sistemas mediante los siguientes comandos en la terminal.
