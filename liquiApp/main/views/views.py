@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from main.models import Usuario, Gente
+from main.models.usuario import Usuario, Gente
 from main.functions import apiObtenerParidad
 import requests
 # Create your views here.
