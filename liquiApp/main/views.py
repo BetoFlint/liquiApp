@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from main.models import Usuario, Gente
+from main.functions import apiObtenerParidad
 import requests
 # Create your views here.
 def index(request):
@@ -8,17 +9,12 @@ def index(request):
 
 def home(request):
     gente = Gente.objects.all()
-    response = requests.get('https://mindicador.cl/api/uf/13-03-2024')
-#    if response.status_code == 200:
-        # Procesar los datos recibidos
-    datas = response.json()
-    data = datas['nombre']
-    valor= datas['serie'][0]['valor']
-   
+    paridad, valor = apiObtenerParidad('dolar', '13-03-2024')
         # Renderizar una plantilla con los datos
-    return render(request, "home.html", { "gente": gente , 'data': data, 'valor':valor}) 
+    return render(request, "home.html", { "gente": gente , 'data': paridad, 'valor':valor}) 
 
 def login(request):
+
     return render(request, "login.html")
 
 def signup(request):
