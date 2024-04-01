@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 #ACA SE REGISTRAN TODAS LAS APP (SUBAPLICATTION ) INSTALADOS
     'liquiApp',
     'main',
@@ -108,18 +109,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'main.Usuario'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Santiago'
 
-USE_I18N = True
 
+
+
+USE_I18N = True  # Habilita la internacionalización
+USE_L10N = True  # Habilita la localización
 USE_TZ = True
-
+LANGUAGE_CODE = 'es-cl'
+TIME_ZONE = 'America/Santiago'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/

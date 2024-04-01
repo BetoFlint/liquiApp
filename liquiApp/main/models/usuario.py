@@ -1,11 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Usuario (models.Model):
-    username = models.CharField(max_length=60)
-#    apellidoP = models.CharField(max_length=60)
-#    apellidoM = models.CharField(max_length=60)
-#    correo = models.CharField(max_length=60)
-#    password = models.CharField(max_length=60)
-    
-class Gente(models.Model):
-    nombrePersona = models.CharField(max_length = 20)
+class Usuario (AbstractUser):
+    rut = models.CharField(max_length = 10)
+    nombre = models.CharField(max_length = 50)
+    apellidopat = models.CharField(max_length = 50)
+    apellidomat = models.CharField(max_length = 50)
+    tipousuario = models.CharField(max_length = 10)
+

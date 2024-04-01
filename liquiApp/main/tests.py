@@ -1,5 +1,6 @@
-from django.test import SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from main.functions import apiObtenerParidad, enviar_correo
+from main.models.sii import obtener_impuesto_por_monto_y_periodo
 
 # Create your tests here.
 class apiObtenerParidad_uf(SimpleTestCase):
@@ -15,4 +16,9 @@ class apiObtenerParidad_dolar(SimpleTestCase):
 class enviarCorreo_test (SimpleTestCase):
     def test_enviarCorreo(self):
         resultado = enviar_correo('jalbornozr2@gmail.com', 'test', 'test', )
+        self.assertEqual(resultado, 1)
+
+class obtener_impuesto_por_monto_y_periodo_test (TestCase):
+    def test_impSegCat(self):
+        resultado = obtener_impuesto_por_monto_y_periodo(100000, '202312')
         self.assertEqual(resultado, 1)

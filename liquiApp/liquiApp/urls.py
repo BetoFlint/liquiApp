@@ -20,10 +20,11 @@ from main import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
+    path('', views.login_view), #Donde accede por defecto
     path('home', views.home),
-    path('login', views.login, name='login'),
-    path('signup', views.signup),
-    path('forgot', views.forgot),
-    path('liquidacion', views.liquidacion),
+    path('levanta', views.login_view, name='levanta'), #sitio de login
+    path('inicio', views.inicioview, name='inicio'), #sitio con menu principal
+    path('signup', views.signup), #sitio para dar de alta un nuevo usuario 
+    path('forgot', views.forgotview, name='forgot'), #sitio de olvidó su contraseña
+    path('liquidacion', views.simularLiquidacion_view, name = 'liquidacion'), #sitio para simular liquidación de sueldo
 ]

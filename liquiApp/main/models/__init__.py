@@ -1,2 +1,4 @@
-from .liquidacion import Liquidacion
-from .usuario import Usuario, Gente
+from .liquidacion import *
+from .usuario import Usuario
+from .gob import *
+from .sii import *

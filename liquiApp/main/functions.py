@@ -29,7 +29,7 @@ def apiObtenerParidad(paridad, fecha):
         data = False
         valor = False
     return data, valor
-   
+
 def enviar_correo(destinatario, asunto, mensaje, archivo_adjunto=None):
     # Configura tus credenciales y servidor SMTP
     #remitente = 'slsmagubo@gmail.com'

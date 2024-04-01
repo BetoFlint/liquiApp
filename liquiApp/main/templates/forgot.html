@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Probado Templates</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}" />
-  </head>
-  <body>
-    {% include './generic/header.html' %} Estamos probando codigos de login
-    Estamos probando codigos de forgot {% include './generic/footer.html' %}
-    Estamos probando codigos de login {% include './generic/footer.html' %}
-  </body>
-</html>
+{% extends './generic/base.html' %} {% block content %}
+
+<body>
+  Estamos probando codigos de forgot
+</body>
+
+{% endblock %}

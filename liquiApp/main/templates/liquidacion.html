@@ -1,14 +1,116 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>Probado Templates</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}" />
-  </head>
-  <body>
-    {% include './generic/header.html' %} <br />
-    Estamos probando codigos de liquidacion<br />
-    {% include './generic/footer.html' %}
-  </body>
-</html>
+{% extends './generic/base.html' %} {% block content %}{% load number_filters %}
+<body>
+  <h1>Ingreso datos de Simulación</h1>
+  <form action="{% url 'liquidacion' %}" class="form" method="post">
+    {% csrf_token %}
+    <input
+      class="input"
+      type="number"
+      name="{{ form.sueldo_base.name }}"
+      value="{{ form.sueldo_base.value }}"
+      placeholder="Sueldo base"
+    />
+    <input
+      class="input"
+      type="number"
+      name="{{ form.otros_ingresos.name }}"
+      value="{{ form.otros_ingresos.value }}"
+      placeholder="Otros Ingresos"
+    />
+    <input
+      class="input"
+      type="number"
+      name="{{ form.asignaciones.name }}"
+      value="{{ form.asignaciones.value }}"
+      placeholder="Asignaciones"
+    />
+    <input
+      class="input"
+      type="number"
+      name="{{ form.descuentos.name }}"
+      value="{{ form.descuentos.value }}"
+      placeholder="Descuentos"
+    />
+
+    <input
+      class="input"
+      type="number"
+      name="{{ form.costo_plan_isapre.name }}"
+      value="{{ form.costo_plan_isapre.value }}"
+      placeholder="Costo plan Isapre"
+      step="0.01"
+    />
+
+    <input class="login-button" type="submit" value="Calcular" />
+  </form>
+
+  <h2>Datos estáticos</h2>
+  <div class="grid-container">
+    <!-- Generar 10 filas de 2 columnas -->
+    <div class="grid-item">Ingreso mínimo mensual</div>
+    <div class="grid-item">{{ ingreso_minimo_men|format_number }}</div>
+
+    <div class="grid-item">Valor UTM</div>
+    <div class="grid-item">{{ valor_utm|float_number }}</div>
+
+    <div class="grid-item">Valor UF</div>
+    <div class="grid-item">{{ valor_uf|float_number }}</div>
+
+    <div class="grid-item">Tope Imponible en UF</div>
+    <div class="grid-item">{{ tope_imponible_uf_afpsalud|format_number }}</div>
+
+    <div class="grid-item">Tope Imponible en Pesos</div>
+    <div class="grid-item">{{ tope_imponible_clp_afpsalud|format_number }}</div>
+
+    <div class="grid-item">Tope Imponible Seguro de Cesantía</div>
+    <div class="grid-item">{{ tope_imponible_seg_ces|format_number }}</div>
+
+    <div class="grid-item">Sueldo Base</div>
+    <div class="grid-item">{{ sueldo_base|format_number }}</div>
+
+    <div class="grid-item">Gratificación</div>
+    <div class="grid-item">{{ gratificacion|format_number }}</div>
+
+    <div class="grid-item">Otros Ingresos</div>
+    <div class="grid-item">{{ otros_ingresos|format_number }}</div>
+
+    <div class="grid-item">
+      Total Haberes Imponible: Se compone de sueldo base + gratificación + Otros
+      ingresos
+    </div>
+    <div class="grid-item">{{ total_hab_imp|format_number }}</div>
+
+    <div class="grid-item">Asignaciones</div>
+    <div class="grid-item">{{ asignaciones|format_number }}</div>
+
+    <div class="grid-item">
+      Total Haberes No Imponible: Se compone de todos aquellos ingresos no
+      imponibles como asignación Teletrabajo, colación, locomoción, etc.
+    </div>
+    <div class="grid-item">{{ total_hab_no_imp|format_number }}</div>
+
+    <div class="grid-item">Cotización AFP</div>
+    <div class="grid-item">{{ cotizacion_obl_afp|format_number }}</div>
+    <div class="grid-item">Cotización Salud</div>
+    <div class="grid-item">{{ cotizacion_salud|format_number }}</div>
+    <div class="grid-item">Aporte Adicional Plan de Salud</div>
+    <div class="grid-item">{{ adicional_salud|format_number }}</div>
+
+    <div class="grid-item">Seguro Cesantía</div>
+    <div class="grid-item">{{ segur_cesantia|format_number }}</div>
+
+    <div class="grid-item">
+      Remuneración antes de impuesto: Ya se descontaron AFP, Salud y seguro de
+      cesantia
+    </div>
+    <div class="grid-item">{{ sueldo_antes_impuesto|format_number }}</div>
+
+    <div class="grid-item">Impuesto a la renta</div>
+    <div class="grid-item">10,2</div>
+
+    <div class="grid-item">Remuneración despues de impuesto</div>
+    <div class="grid-item">10,2</div>
+  </div>
+</body>
+
+{% endblock %}
