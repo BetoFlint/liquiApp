@@ -5,7 +5,7 @@ from main.forms.userforms import LoginForm
 from main.forms.liquidacionForms import liquidacionForm
 
 def simularLiquidacion_view(request):
-    print("entra0")
+    
     datos_liquidacion = {
             'ingreso_minimo_men': '460000', #dejar fijo, deseable base de datos.
             'valor_utm': '64666',    #obtener desde api
@@ -20,7 +20,9 @@ def simularLiquidacion_view(request):
             'otros_ingresos': '0' , #Corresponde a bonos, aguinaldos, seguro vida colectivo
             'asignaciones': '0', #corresponde asignacion teletrabajo, transporte y colacion
             'descuentos': '0', #corresponde asignacion teletrabajo, transporte y colacion
-            'costo_plan_isapre' : 0
+            'costo_plan_isapre' : 0, 
+            'tasa' : 0, 
+            'rebaja' : 0
             
         }
     #Este primer if es para cuando el usuario envia datos
@@ -84,7 +86,37 @@ def simularLiquidacion_view(request):
     datos_liquidacion['sueldo_antes_impuesto'] = sueldo_antes_impuesto
     datos_liquidacion['tasa_imp_unico_cat'] = tasa_imp_unico_cat
     datos_liquidacion['adicional_salud'] = adicional_salud
-    
+
+    tramos_impuesto = [
+    {"Periodo": "MENSUAL", "Desde": "0", "Hasta": "$ 879.957,00", "Factor": 0, "Cantidad a Rebajar": "0", "Tasa de Impuesto Efectiva": "Exento"},
+    {"Periodo": "MENSUAL", "Desde": "$ 879.957,01", "Hasta": "$ 1.955.460,00", "Factor": 0.04, "Cantidad a Rebajar": "$ 35.198,28", "Tasa de Impuesto Efectiva": "2,20%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 1.955.460,01", "Hasta": "$ 3.259.100,00", "Factor": 0.08, "Cantidad a Rebajar": "$ 113.416,68", "Tasa de Impuesto Efectiva": "4,52%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 3.259.100,01", "Hasta": "$ 4.562.740,00", "Factor": 0.135, "Cantidad a Rebajar": "$ 292.667,18", "Tasa de Impuesto Efectiva": "7,09%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 4.562.740,01", "Hasta": "$ 5.866.380,00", "Factor": 0.23, "Cantidad a Rebajar": "$ 726.127,48", "Tasa de Impuesto Efectiva": "10,62%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 5.866.380,01", "Hasta": "$ 7.821.840,00", "Factor": 0.304, "Cantidad a Rebajar": "$ 1.160.239,60", "Tasa de Impuesto Efectiva": "15,57%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 7.821.840,01", "Hasta": "$ 20.206.420,00", "Factor": 0.35, "Cantidad a Rebajar": "$ 1.520.044,24", "Tasa de Impuesto Efectiva": "27,48%"},
+    {"Periodo": "MENSUAL", "Desde": "$ 20.206.420,01", "Hasta": "Y MÁS", "Factor": 0.4, "Cantidad a Rebajar": "$ 2.530.365,24", "Tasa de Impuesto Efectiva": "MÁS DE 27,48%"}
+    ]
+    tasa = 0
+    rebaja = 0
+    for tramo in tramos_impuesto:
+        
+        # Ignoramos los tramos exentos para este ejemplo
+        if tramo["Desde"] != "-" and tramo["Hasta"] != "Y MÁS":
+            desde_numerico = float(tramo["Desde"].replace("$ ", "").replace(".", "").replace(",", "."))
+            hasta_numerico = float(tramo["Hasta"].replace("$ ", "").replace(".", "").replace(",", "."))
+            if desde_numerico < sueldo_antes_impuesto <= hasta_numerico:
+                print(f"Para un monto de {sueldo_antes_impuesto}, el tramo es: {tramo}")
+                tasa = float(tramo["Factor"])
+                rebaja = float(tramo["Cantidad a Rebajar"].replace("$ ", "").replace(".", "").replace(",", "."))
+
+                break
+    impuesto_seg_categoria = sueldo_antes_impuesto * tasa - rebaja
+    sueldo_despues_impuesto = sueldo_antes_impuesto - impuesto_seg_categoria
+
+    datos_liquidacion['tasa'] = tasa
+    datos_liquidacion['rebaja'] = rebaja
+    datos_liquidacion['sueldo_despues_impuesto'] = sueldo_despues_impuesto
 
     contexto = {'form': form, **datos_liquidacion}
     return render(request, 'liquidacion.html', contexto)

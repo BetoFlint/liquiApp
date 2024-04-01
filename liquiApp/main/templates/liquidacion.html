@@ -1,50 +1,53 @@
 {% extends './generic/base.html' %} {% block content %}{% load number_filters %}
 <body>
-  <h1>Ingreso datos de Simulación</h1>
-  <form action="{% url 'liquidacion' %}" class="form" method="post">
-    {% csrf_token %}
-    <input
-      class="input"
-      type="number"
-      name="{{ form.sueldo_base.name }}"
-      value="{{ form.sueldo_base.value }}"
-      placeholder="Sueldo base"
-    />
-    <input
-      class="input"
-      type="number"
-      name="{{ form.otros_ingresos.name }}"
-      value="{{ form.otros_ingresos.value }}"
-      placeholder="Otros Ingresos"
-    />
-    <input
-      class="input"
-      type="number"
-      name="{{ form.asignaciones.name }}"
-      value="{{ form.asignaciones.value }}"
-      placeholder="Asignaciones"
-    />
-    <input
-      class="input"
-      type="number"
-      name="{{ form.descuentos.name }}"
-      value="{{ form.descuentos.value }}"
-      placeholder="Descuentos"
-    />
+  <h1 class="h1center">Ingreso datos de Simulación</h1>
+  <div class="entradaDatos">
+    <form action="{% url 'liquidacion' %}" class="form" method="post">
+      {% csrf_token %}
+      <input
+        class="input"
+        type="number"
+        name="{{ form.sueldo_base.name }}"
+        value="{{ form.sueldo_base.value }}"
+        placeholder="Sueldo base"
+      />
+      <input
+        class="input"
+        type="number"
+        name="{{ form.otros_ingresos.name }}"
+        value="{{ form.otros_ingresos.value }}"
+        placeholder="Otros Ingresos"
+      />
+      <input
+        class="input"
+        type="number"
+        name="{{ form.asignaciones.name }}"
+        value="{{ form.asignaciones.value }}"
+        placeholder="Asignaciones"
+      />
+      <input
+        class="input"
+        type="number"
+        name="{{ form.descuentos.name }}"
+        value="{{ form.descuentos.value }}"
+        placeholder="Descuentos"
+      />
 
-    <input
-      class="input"
-      type="number"
-      name="{{ form.costo_plan_isapre.name }}"
-      value="{{ form.costo_plan_isapre.value }}"
-      placeholder="Costo plan Isapre"
-      step="0.01"
-    />
+      <input
+        class="input"
+        type="number"
+        name="{{ form.costo_plan_isapre.name }}"
+        value="{{ form.costo_plan_isapre.value }}"
+        placeholder="Costo plan Isapre"
+        step="0.01"
+      />
 
-    <input class="login-button" type="submit" value="Calcular" />
-  </form>
+      <input class="login-button" type="submit" value="Calcular" />
+    </form>
+  </div>
+  <h1 class="h1center">Resumen de Liquidación</h2>
 
-  <h2>Datos estáticos</h2>
+  <h2 class="h1center">Datos estáticos</h2>
   <div class="grid-container">
     <!-- Generar 10 filas de 2 columnas -->
     <div class="grid-item">Ingreso mínimo mensual</div>
@@ -105,11 +108,14 @@
     </div>
     <div class="grid-item">{{ sueldo_antes_impuesto|format_number }}</div>
 
-    <div class="grid-item">Impuesto a la renta</div>
-    <div class="grid-item">10,2</div>
+    <div class="grid-item">Tasa de Impuesto a la renta</div>
+    <div class="grid-item">{{ tasa|float_number }}</div>
+
+    <div class="grid-item">Monto Rebaja</div>
+    <div class="grid-item">{{ rebaja|format_number }}</div>
 
     <div class="grid-item">Remuneración despues de impuesto</div>
-    <div class="grid-item">10,2</div>
+    <div class="grid-item">{{ sueldo_despues_impuesto|format_number }}</div>
   </div>
 </body>
 
