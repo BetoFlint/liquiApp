@@ -26,7 +26,7 @@ p, h1, h2, h3, a, h4, h5{
 .menu li a {
   display: block;
   color: #fff;
-  background-color: #ff6f3c;
+  background-color: #347474;
   text-align: center;
   width: 200px;
   padding: 16px 0;
@@ -34,7 +34,7 @@ p, h1, h2, h3, a, h4, h5{
   transition: background-color 0.5s ease;
 }
 .menu li a:hover {
-  background-color: #ff9a3c;
+  background-color: #42b883;
 }
 
 .menu-icon {
