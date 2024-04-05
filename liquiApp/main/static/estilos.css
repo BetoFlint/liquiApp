@@ -324,6 +324,10 @@ a.link-autor{
   line-height: 22px;
 }
 
+.grid-container .box a:hover {
+  color: #347474;
+}
+
 .grid-container .box p {
   font-weight: 300;
   font-size: 14px;
