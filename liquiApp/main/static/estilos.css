@@ -21,10 +21,14 @@ p,h1,h2,h3,a,h4,h5 {
 	padding: 0;
 	overflow: hidden;
 	/* background-color: #333;*/
+	width: 100%;
+    display: flex;
+    flex-direction: row;
 }
 
 .menu li {
 	float: left;
+	width: 25%;
 }
 
 .menu li a {
@@ -32,7 +36,7 @@ p,h1,h2,h3,a,h4,h5 {
 	color: #fff;
 	background-color: #347474;
 	text-align: center;
-	width: 200px;
+	width: 100%;
 	padding: 16px 0;
 	text-decoration: none;
 	transition: background-color 0.5s ease;
@@ -82,7 +86,11 @@ footer .footer-section {
 
 header {
 	color: #2a2b2e;
+	width: 100%;
 	/* Color del texto */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .entradaDatos {
@@ -374,4 +382,18 @@ footer a:hover {
 
 .green-text{
 	color: #347474;
+}
+
+ul.menu li:not(:last-child) {
+    border-right: #fff 0.5px solid;
+}
+
+.header-content {
+	width: 1240px;
+}
+
+@media(max-width: 1250px){
+	header-content{
+		width: 95%;
+	}
 }
