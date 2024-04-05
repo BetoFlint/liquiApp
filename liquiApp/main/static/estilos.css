@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
 body {
   background-color: #a4c2a8;
   color: #2a2b2e;
   display: flex;
   flex-direction: column; /* Alinea los elementos hijos verticalmente */
   justify-content: center; /* Centra los elementos hijos verticalmente */
+  font-family: 'Ubuntu';
+}
+
+p, h1, h2, h3, a, h4, h5{
+  font-family: 'Ubuntu';
 }
 
 .menu {
@@ -18,13 +25,16 @@ body {
 }
 .menu li a {
   display: block;
-  color: white;
+  color: #fff;
+  background-color: #ff6f3c;
   text-align: center;
-  padding: 14px 16px;
+  width: 200px;
+  padding: 16px 0;
   text-decoration: none;
+  transition: background-color 0.5s ease;
 }
 .menu li a:hover {
-  background-color: #111;
+  background-color: #ff9a3c;
 }
 
 .menu-icon {
@@ -289,4 +299,42 @@ a:active {
 
 .sin-subrayado {
   text-decoration: none;
+}
+
+a.link-autor{
+  color: #383838;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.grid-container .box {
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.grid-container .box:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.grid-container .box a {
+  font-weight: bolder;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.grid-container .box p {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.grid-container .box img{
+  margin-right: 10px;
+}
+
+.grid-container .box .box-up {
+  display: flex;
+  align-items: center;
+  margin-bottom: -5px
 }
