@@ -1,6 +1,6 @@
 {% extends './generic/base.html' %} {% block content %}{% load number_filters %}
 <body>
-  <h1 class="h1center">Ingreso datos de Simulación</h1>
+  <h1 class="h1center green-text">Ingreso datos de Simulación</h1>
   <div class="entradaDatos">
     <form action="{% url 'liquidacion' %}" class="form" method="post">
       {% csrf_token %}
@@ -45,9 +45,9 @@
       <input class="login-button" type="submit" value="Calcular" />
     </form>
   </div>
-  <h1 class="h1center">Resumen de Liquidación</h2>
+  <h1 class="h1center green-text">Resumen de Liquidación</h2>
 
-  <h2 class="h1center">Datos estáticos</h2>
+  <h2 class="h1center green-text">Datos estáticos</h2>
   <div class="grid-container">
     <!-- Generar 10 filas de 2 columnas -->
     <div class="grid-item">Ingreso mínimo mensual</div>
