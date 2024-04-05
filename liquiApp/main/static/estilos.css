@@ -51,6 +51,7 @@ footer {
   display: flex;
   flex-direction: row; /* Alinea los elementos hijos verticalmente */
   justify-content: center; /* Centra los elementos hijos verticalmente */
+  align-items: baseline;
 }
 footer .footer-section {
   flex: 1; /* Hace que cada sección ocupe un espacio igual */
@@ -337,4 +338,8 @@ a.link-autor{
   display: flex;
   align-items: center;
   margin-bottom: -5px
+}
+
+footer a:hover {
+    color: #347474;
 }
