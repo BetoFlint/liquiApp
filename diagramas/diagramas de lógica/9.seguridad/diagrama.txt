@@ -1,0 +1,29 @@
+@startuml
+title Plataforma de Comunicación Interna - Seguridad
+
+class Seguridad {
+    + encriptarDatos(datos: Datos): DatosCifrados
+    + autenticarUsuario(usuario: Usuario, contraseña: string): boolean
+    + controlAcceso(usuario: Usuario, recurso: Recurso): boolean
+    + cumplimientoNormativas(): string
+}
+
+class SistemaComunicacionInterna {
+    + mensajeríaInstantánea: MensajeríaInstantánea
+    + tablónDeAnuncios: TablónDeAnuncios
+    + calendarioCompartido: CalendarioCompartido
+    + directorioDeEmpleados: DirectorioDeEmpleados
+    + forosYGruposDeDiscusión: ForosYGruposDeDiscusión
+    + encuestasYSondeos: EncuestasYSondeos
+    + notificacionesYAlertas: NotificacionesYAlertas
+    + integraciónHerramientasExternas: IntegraciónHerramientasExternas
+    + seguridad: Seguridad
+}
+
+class Usuario {
+    + nombre: string
+    + rut: string
+}
+
+SistemaComunicacionInterna "1" -- "1" Seguridad
+@enduml

@@ -1,0 +1,32 @@
+@startuml
+title Catálogo de Cursos y Sesiones de Capacitación
+
+package "Catálogo de Cursos" {
+    class Curso {
+        + nombre: string
+        + descripción: string
+        + objetivos: string[]
+        + duración: string
+        + requisitosPrevios: string
+        + categoría: string
+        + nivelHabilidad: string
+        + sesiones: Sesión[]
+    }
+
+    class Sesión {
+        + fecha: date
+        + capacidadMaxima: int
+    }
+}
+
+class CatálogoDeCursos {
+    + cursos: Curso[]
+    + agregarCurso(curso: Curso): void
+    + buscarCursosPorCategoría(categoría: string): Curso[]
+    + buscarCursosPorNivelHabilidad(nivel: string): Curso[]
+    + agregarSesiónACurso(curso: Curso, sesión: Sesión): void
+}
+
+CatálogoDeCursos "1" *-- "0..*" Curso
+Curso "1" *-- "0..*" Sesión
+@enduml

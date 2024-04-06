@@ -1,0 +1,38 @@
+@startuml
+title Programación de Capacitaciones
+
+class Empleado {
+    + nombre: string
+    + rut: string
+    + correoElectronico: string
+    + cursosAsignados: Curso[]
+}
+
+class Curso {
+    + nombre: string
+    + sesiones: Sesión[]
+}
+
+class Sesión {
+    + fecha: date
+    + empleadosAsistentes: Empleado[]
+}
+
+class SistemaProgramaciónCapacitaciones {
+    + cursosDisponibles: Curso[]
+    + empleados: Empleado[]
+    + programarSesión(curso: Curso, fecha: date, empleados: Empleado[]): void
+    + asignarEmpleadoACurso(empleado: Empleado, curso: Curso): void
+    + enviarNotificación(empleado: Empleado, mensaje: string): void
+}
+
+class Notificador {
+    + enviarNotificación(correoElectronico: string, mensaje: string): void
+}
+
+SistemaProgramaciónCapacitaciones "1" *-- "1..*" Curso
+SistemaProgramaciónCapacitaciones "1" *-- "1..*" Empleado
+SistemaProgramaciónCapacitaciones "1" o-- "1" Notificador
+Curso "1" *-- "0..*" Sesión
+Sesión "1" *-- "0..*" Empleado
+@enduml

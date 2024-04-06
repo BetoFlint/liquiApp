@@ -1,0 +1,29 @@
+@startuml
+title Recursos de Aprendizaje
+
+class Recurso {
+    + nombre: string
+    + tipo: string
+    + ubicación: string
+}
+
+class SistemaRecursosAprendizaje {
+    + recursos: Recurso[]
+    + agregarRecurso(recurso: Recurso): void
+    + buscarRecursos(palabraClave: string): Recurso[]
+}
+
+class Empleado {
+    + nombre: string
+    + rut: string
+}
+
+class InterfazEmpleado {
+    + buscarRecursos(palabraClave: string): Recurso[]
+    + accederRecurso(recurso: Recurso): void
+}
+
+SistemaRecursosAprendizaje "1" *-- "0..*" Recurso
+SistemaRecursosAprendizaje "1" *-- "0..*" Empleado
+InterfazEmpleado "1" *-- "0..*" Recurso
+@enduml

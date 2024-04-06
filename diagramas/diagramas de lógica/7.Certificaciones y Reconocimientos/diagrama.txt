@@ -1,0 +1,28 @@
+@startuml
+title Certificaciones y Reconocimientos
+
+class Certificado {
+    + nombreEmpleado: string
+    + nombreCurso: string
+    + fechaFinalización: date
+}
+
+class SistemaCertificaciones {
+    + certificados: Certificado[]
+    + emitirCertificado(nombreEmpleado: string, nombreCurso: string, fechaFinalización: date): void
+    + buscarCertificadosEmpleado(nombreEmpleado: string): Certificado[]
+}
+
+class Empleado {
+    + nombre: string
+    + rut: string
+}
+
+class InterfazEmpleado {
+    + verCertificados(): Certificado[]
+}
+
+SistemaCertificaciones "1" *-- "0..*" Certificado
+SistemaCertificaciones "1" *-- "0..*" Empleado
+InterfazEmpleado "1" *-- "0..*" Certificado
+@enduml

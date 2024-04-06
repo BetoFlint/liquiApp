@@ -1,0 +1,18 @@
+@startuml
+package "Interfaz de Usuario" {
+    [Interfaz de Usuario] as UI
+}
+
+package "Sistema basado en la nube" {
+    [AWS] as AWS
+    [Docker] as DockerNode
+    [Python] as PythonComp
+    [SQL] as SqlComp
+    [Django] as DjangoComp
+}
+
+UI -right-> DockerNode: Realiza peticiones HTTP
+DockerNode -up-> PythonComp: Procesa peticiones HTTP
+DockerNode -up-> SqlComp: Consulta y actualiza la base de datos
+DockerNode -up-> DjangoComp: Maneja la lógica de la aplicación
+@enduml

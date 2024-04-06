@@ -1,0 +1,101 @@
+@startuml
+title Plataforma de Comunicación Interna
+
+class MensajeríaInstantánea {
+    + enviarMensaje(destinatario: Usuario, mensaje: string): void
+    + adjuntarArchivo(destinatario: Usuario, archivo: Archivo): void
+}
+
+class TablónDeAnuncios {
+    + publicarAnuncio(administrador: Usuario, anuncio: Anuncio): void
+}
+
+class CalendarioCompartido {
+    + programarEvento(evento: Evento): void
+    + suscribirseEvento(usuario: Usuario, evento: Evento): void
+}
+
+class DirectorioDeEmpleados {
+    + buscarEmpleado(nombre: string): Usuario
+}
+
+class ForosYGruposDeDiscusión {
+    + crearForo(usuario: Usuario, nombre: string): Foro
+    + crearGrupoDeDiscusión(usuario: Usuario, nombre: string): GrupoDeDiscusión
+}
+
+class EncuestasYSondeos {
+    + crearEncuesta(usuario: Usuario, encuesta: Encuesta): void
+    + distribuirEncuesta(encuesta: Encuesta): void
+}
+
+class NotificacionesYAlertas {
+    + enviarNotificación(usuario: Usuario, mensaje: string): void
+}
+
+class IntegraciónHerramientasExternas {
+    + integrarCalendario(calendario: Calendario): void
+    + integrarSistemaGestiónProyectos(sistema: SistemaGestiónProyectos): void
+    + integrarCorreoElectrónico(correo: CorreoElectrónico): void
+}
+
+class SeguridadYPrivacidad {
+    + autenticarUsuario(usuario: Usuario, contraseña: string): boolean
+    + controlAcceso(usuario: Usuario, recurso: Recurso): boolean
+    + cifrarDatos(datos: Datos): DatosCifrados
+}
+
+class Usuario {
+    + nombre: string
+}
+
+class Anuncio {
+    + contenido: string
+    + categoría: string
+}
+
+class Evento {
+    + nombre: string
+    + fecha: date
+    + descripción: string
+}
+
+class Foro {
+    + nombre: string
+}
+
+class GrupoDeDiscusión {
+    + nombre: string
+}
+
+class Encuesta {
+    + preguntas: string[]
+}
+
+class Archivo {
+    + nombre: string
+    + tamaño: int
+}
+
+class Calendario {}
+
+class SistemaGestiónProyectos {}
+
+class CorreoElectrónico {}
+
+class Recurso {}
+
+class Datos {}
+
+class DatosCifrados {}
+
+MensajeríaInstantánea "1" -- "0..*" Usuario
+TablónDeAnuncios "1" -- "0..*" Usuario
+CalendarioCompartido "1" -- "0..*" Usuario
+DirectorioDeEmpleados "1" -- "0..*" Usuario
+ForosYGruposDeDiscusión "1" -- "0..*" Usuario
+EncuestasYSondeos "1" -- "0..*" Usuario
+NotificacionesYAlertas "1" -- "0..*" Usuario
+IntegraciónHerramientasExternas "1" -- "0..*" Usuario
+SeguridadYPrivacidad "1" -- "0..*" Usuario
+@enduml

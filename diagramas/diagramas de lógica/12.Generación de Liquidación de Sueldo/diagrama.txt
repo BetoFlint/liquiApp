@@ -1,0 +1,43 @@
+@startuml
+actor Supervisor as Sup
+participant "Sistema" as S
+database "API Externa" as A
+participant "Trabajador" as T
+
+title Diagrama de Secuencia de Arquitectura - Generación de Liquidación de Sueldo
+
+== Inicio de Sesión del Supervisor ==
+Sup -> S: Inicia Sesión
+activate S
+S -> S: Verifica Credenciales
+activate S
+S -> S: Autentica Usuario
+activate S
+S --> Sup: Sesión Iniciada
+deactivate S
+
+== Generación de Liquidación de Sueldo ==
+Sup -> S: Ingresa a la generación de liquidación de sueldo
+Sup -> S: Selecciona Empleado
+S --> Sup: Empleado Seleccionado
+Sup -> S: Agrega Bonos del Empleado
+S --> Sup: Bonos Agregados
+Sup -> S: Agrega Descuentos del Empleado
+S --> Sup: Descuentos Agregados
+activate S
+Sup -> A: Consulta API para obtener Valor de UF y UTM
+activate A
+A --> S: Respuesta con Valor de UF y UTM
+deactivate A
+S --> S: Calcula Liquidación con UF y UTM
+activate S
+S --> Sup: Liquidación Generada
+deactivate S
+Sup -> Sup: Revisa que los datos sean correctos
+
+== Generación de PDF ==
+Sup -> S: Solicita Generación de PDF
+activate S
+S --> T: Envía PDF de Liquidación
+deactivate S
+@enduml

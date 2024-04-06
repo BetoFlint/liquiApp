@@ -1,0 +1,40 @@
+@startuml
+title Seguimiento del Progreso
+
+class Empleado {
+    + nombre: string
+    + rut: string
+    + cursosInscritos: Curso[]
+}
+
+class Curso {
+    + nombre: string
+    + sesiones: Sesión[]
+}
+
+class Sesión {
+    + fecha: date
+    + asistentes: Empleado[]
+    + evaluaciones: Evaluación[]
+}
+
+class Evaluación {
+    + tipo: string
+    + resultado: string
+}
+
+class SistemaSeguimientoProgreso {
+    + empleados: Empleado[]
+    + cursos: Curso[]
+    + registrarAsistencia(empleado: Empleado, sesión: Sesión): void
+    + registrarEvaluación(empleado: Empleado, sesión: Sesión, evaluación: Evaluación): void
+    + generarInformeIndividual(empleado: Empleado): void
+    + generarInformeGrupal(): void
+}
+
+SistemaSeguimientoProgreso "1" *-- "0..*" Empleado
+SistemaSeguimientoProgreso "1" *-- "1..*" Curso
+Curso "1" *-- "0..*" Sesión
+Sesión "1" *-- "0..*" Empleado
+Sesión "1" *-- "0..*" Evaluación
+@enduml

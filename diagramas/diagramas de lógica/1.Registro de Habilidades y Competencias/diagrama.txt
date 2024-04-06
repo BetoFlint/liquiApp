@@ -1,0 +1,34 @@
+@startuml
+title Registro de Habilidades y Competencias de Empleados
+
+class Empleado {
+    + nombre: string
+    + rut: string
+    + habilidades: Habilidad[]
+}
+
+class Habilidad {
+    + nombre: string
+    + nivelCompetencia: string
+}
+
+class SistemaRegistroHabilidades {
+    + empleados: Empleado[]
+    + agregarEmpleado(empleado: Empleado): void
+    + buscarEmpleado(nombre: string): Empleado
+    + actualizarHabilidad(empleado: Empleado, habilidad: Habilidad): void
+    + asignarNivelCompetencia(habilidad: Habilidad, nivel: string): void
+}
+
+class InterfazEmpleado {
+    + actualizarHabilidades(empleado: Empleado, habilidades: Habilidad[]): void
+}
+
+class Supervisor {
+    + aprobarActualización(empleado: Empleado): void
+}
+
+SistemaRegistroHabilidades "1" *-- "0..*" Empleado
+Empleado "1" *-- "0..*" Habilidad
+InterfazEmpleado "1" o-- "0..1" Supervisor
+@enduml

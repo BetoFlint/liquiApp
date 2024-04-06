@@ -1,0 +1,40 @@
+@startuml
+title Evaluación de Impacto
+
+class Curso {
+    + nombre: string
+    + sesiones: Sesión[]
+}
+
+class Sesión {
+    + fecha: date
+    + asistentes: Empleado[]
+    + evaluaciones: Evaluación[]
+}
+
+class Evaluación {
+    + tipo: string
+    + resultado: string
+}
+
+class Encuesta {
+    + preguntas: string[]
+    + respuestas: string[]
+}
+
+class SistemaEvaluaciónImpacto {
+    + cursos: Curso[]
+    + realizarEncuesta(cursos: Curso[], participantes: Empleado[]): void
+    + recopilarRetroalimentacion(cursos: Curso[], participantes: Empleado[], supervisores: Supervisor[]): void
+}
+
+class Supervisor {
+    + nombre: string
+    + rut: string
+}
+
+SistemaEvaluaciónImpacto "1" *-- "1..*" Curso
+Curso "1" *-- "0..*" Sesión
+Sesión "1" *-- "0..*" Evaluación
+SistemaEvaluaciónImpacto "1" *-- "0..*" Supervisor
+@enduml

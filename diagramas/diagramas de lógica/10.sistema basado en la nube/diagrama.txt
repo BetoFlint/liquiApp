@@ -1,0 +1,23 @@
+@startuml
+!define CentOS <<Centos>>
+!define Docker <<Docker>>
+!define Python <<Python>>
+!define DockerCompose <<Node>>
+!define SQL <<SQL>>
+!define Django <<Django>>
+
+package "Sistema basado en la nube" {
+    [CentOS] as CentosNode
+    [Docker] as DockerNode
+    [Python] as PythonComp
+    [SQL] as SqlComp
+    [Django] as DjangoComp
+    [Docker Compose] as DockerComposeNode
+}
+
+CentosNode -- DockerNode
+DockerNode -- DockerComposeNode
+DockerComposeNode -- PythonComp
+DockerComposeNode -- SqlComp
+DockerComposeNode -- DjangoComp
+@enduml
