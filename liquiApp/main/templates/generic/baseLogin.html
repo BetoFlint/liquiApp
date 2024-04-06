@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %} {% load number_filters %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}SGT - Chile{% endblock title %}</title>
+    <!-- Enlaces a CSS externos o internos -->
+    <link rel="stylesheet" href="{% static 'estilos.css' %}" />
+    <link rel="stylesheet" href="{% static 'buttons.css' %}" />
+    <link rel="stylesheet" href="{% static 'inputs.css' %}" />
+    <!-- Otros elementos del head -->
+  </head>
+  <header>{% include './headerLogin.html' %} <br /></header>
+  <body>
+    {% block content %}
+    <!-- El contenido específico de cada página reemplazará este bloque -->
+    {% endblock content %}
+
+    <!-- Scripts al final para una carga de página más rápida -->
+    <!--<script src="{% static 'js/script.js' %}"></script>-->
+  </body>
+
+  <footer>{% include './footer.html' %}</footer>
+</html>

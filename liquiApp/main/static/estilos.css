@@ -67,7 +67,7 @@ footer {
 	align-items: center;
 	/* Alinea los elementos verticalmente */
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	/* Alinea los elementos hijos verticalmente */
 	justify-content: center;
 	/* Centra los elementos hijos verticalmente */
@@ -390,6 +390,23 @@ ul.menu li:not(:last-child) {
 
 .header-content {
 	width: 1240px;
+}
+
+footer .footer-content {
+    display: flex;
+}
+
+footer .footer-content-down {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .footer-content-down img{
+    width: 120px;
+	margin-top: -28px;
 }
 
 @media(max-width: 1250px){
