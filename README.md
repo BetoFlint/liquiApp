@@ -87,3 +87,5 @@ Pasos a producción
 Ambiente de Certificación.
 Seguimiento y monitoreo
 Gestion de incidentes (Algun gestor de ticket o algo asi)
+
+Los diagramas se abren con extensión .txt se abren en https://www.plantuml.com/plantuml/uml/SyfFKj2rKt3CoKnELR1Io4ZDoSa70000
