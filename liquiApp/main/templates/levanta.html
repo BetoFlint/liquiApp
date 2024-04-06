@@ -1,6 +1,6 @@
 {% extends './generic/baseLogin.html' %} {% block content %}
 <div class="container">
-  <div class="heading">Login</div>
+  <div class="heading">Iniciar sesión</div>
   <form action="{% url 'levanta' %}" class="form" method="post">
     {% csrf_token %}
     <input
@@ -62,7 +62,7 @@
     </div>
   </div>
   <span class="agreement"
-    ><a href="#">Llee sobre nuestras condiciones de Término</a></span
+    ><a href="#">Lee sobre nuestras condiciones de uso</a></span
   >
 </div>
 {% endblock %}
